@@ -4,14 +4,14 @@ import Layout from "@/layouts/Layout";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home() {
+export default function Blog() {
   return (
-    <>
     <Layout>
-     <p>
-      Home page
-     </p>
+     <div className="">
+     <h2 className="text-3xl font-semibold tracking-tight">
+      Blog
+     </h2>
+    </div>
     </Layout>
-    </>
   );
 }
