@@ -2,12 +2,26 @@ backend:
   name: github
   repo: karisakib/pixelprysm # Path to your GitHub repository
   branch: main # Branch to update (optional; defaults to master)
+  commit_messages:
+    create: Create {{collection}} “{{slug}}”
+    update: Update {{collection}} “{{slug}}”
+    delete: Delete {{collection}} “{{slug}}”
+    uploadMedia: Upload “{{path}}”
+    deleteMedia: Delete “{{path}}”
+    openAuthoring: '{{message}}'
 
 collections:
-  - name: blog
+  - title: blog
     label: Blog
-    slug: {{slug}}
+    # slug: "{{slug}}"
+    slug:
+      create: true
+      encoding: "ascii"
+      clean_accents: true
     folder: content/blog
+    media_folder: "static/images/uploads"
+    media_library:
+      name: blog_posts
     create: true
     filter: {field: visibleInCMS, value: true}
     fields: [
