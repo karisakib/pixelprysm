@@ -1,6 +1,6 @@
 {
   "visibleInCMS": true,
-  "title": "testing-json-blog-output",
-  "description": "testing-json-blog-output",
+  "title": "testing-json-blog-decap-cms-output",
+  "description": "testing-json-blog-decap-cms-output",
   "body": "**First paragraph is in bold**\n\n*Second paragraph is in italics*\n\nThird paragraph is in regular text\n\nThis is a numbered list of three elements:\n\n1. elements\n2. elements\n3. elements"
 }
