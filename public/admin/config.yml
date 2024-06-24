@@ -23,10 +23,6 @@ collections:
   - name: blog
     label: Blog
     extension: "json"
-    # slug:
-    #   create: true
-    #   encoding: "ascii"
-    #   clean_accents: true
     folder: content/blog
     media_folder: "static/images/uploads"
     media_library:
@@ -34,10 +30,9 @@ collections:
     create: true
     slug: "{{title}}"
     filter: {field: visibleInCMS, value: true}
-    fields: [
-      {name: title, widget: string},
-      {name: description, widget: string},
-      {name: date, widget: datetime, date_format: "MMMM D, YYYY"},
-      {name: body, widget: markdown},
-      {name: visibleInCMS, widget: hidden, default: true},
-    ]
+    fields:
+      - {name: title, widget: string}
+      - {name: slug, widget: string, pattern: ['^[a-z0-9]+(?:-[a-z0-9]+)*$', "Slug must only contain lowercase letters, numbers, and hyphens"], hint: "Auto-generated from title", default: "{{slug}}", required: true}
+      - {name: description, widget: string}
+      - {name: date, widget: datetime, date_format: "MMMM D, YYYY"}
+      - {name: body, widget: markdown}
