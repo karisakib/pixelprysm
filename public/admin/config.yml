@@ -28,7 +28,7 @@ collections:
     media_library:
       name: blog_posts
     create: true
-    slug: "{{title}}"
+    slug: "{{slug}}"
     filter: {field: visibleInCMS, value: true}
     fields:
       - {name: title, widget: string}
