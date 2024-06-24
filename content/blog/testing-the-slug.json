@@ -1,0 +1,7 @@
+{
+  "slug": "{{fields.title}}",
+  "date": "June 24, 2024",
+  "title": "Testing The Slug",
+  "description": "test",
+  "body": "test"
+}
