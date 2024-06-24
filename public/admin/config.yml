@@ -32,6 +32,7 @@ collections:
     fields: [
       {name: title, widget: string},
       {name: description, widget: string},
+      {name: date, widget: datetime, date_format: "MMMM D, YYYY"}
       {name: body, widget: markdown},
       {name: visibleInCMS, widget: hidden, default: true},
     ]
