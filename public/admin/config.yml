@@ -32,7 +32,7 @@ collections:
     filter: {field: visibleInCMS, value: true}
     fields:
       - {name: title, widget: string}
-      - {name: slug, widget: string, pattern: ['^[a-z0-9]+(?:-[a-z0-9]+)*$', "Slug must only contain lowercase letters, numbers, and hyphens"], hint: "Auto-generated from title", default: "{{slug}}", required: true}
+      - {name: slug, widget: string, pattern: ['^[a-z0-9]+(?:-[a-z0-9]+)*$', "Slug must only contain lowercase letters, numbers, and hyphens"], hint: "Auto-generated from title", default: "{{fields.title}}", required: true}
       - {name: description, widget: string}
       - {name: date, widget: datetime, date_format: "MMMM D, YYYY"}
       - {name: body, widget: markdown}
