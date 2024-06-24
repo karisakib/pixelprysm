@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import Layout from "@/layouts/Layout";
 import * as fs from "fs";
 import * as path from "path";
+import Link from "next/link";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Blog({ posts }) {
@@ -13,9 +14,10 @@ export default function Blog({ posts }) {
         <div className="my-3">
           {posts.map((post, index) => (
             <div key={index} className="flex flex-col my-20">
-              <h1 className="text-4xl font-semibold tracking-tight">
+              <Link href={post.title} className="text-4xl font-semibold tracking-tight">
                 {post.title}
-              </h1>
+              </Link>
+              <span className="text-sm font-light">{post.date}</span>
             </div>
           ))}
         </div>

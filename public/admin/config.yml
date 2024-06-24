@@ -10,6 +10,11 @@ backend:
     deleteMedia: Delete “{{path}}”
     openAuthoring: '{{message}}'
 
+site_url: https://pixelprysm.com
+slug:
+  encoding: "ascii"
+  clean_accents: true
+  sanitize_replacement: "-"
 media_folder: "static/images/uploads"
 media_library:
   name: uploadcare
@@ -17,7 +22,6 @@ media_library:
 collections:
   - name: blog
     label: Blog
-    slug: "{{slug}}"
     extension: "json"
     # slug:
     #   create: true
@@ -28,6 +32,7 @@ collections:
     media_library:
       name: blog_posts
     create: true
+    slug: "{{title}}"
     filter: {field: visibleInCMS, value: true}
     fields: [
       {name: title, widget: string},
