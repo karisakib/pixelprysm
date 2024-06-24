@@ -8,9 +8,9 @@ export default function Home() {
   return (
     <>
     <Layout>
-     <p>
-      Home page
-     </p>
+    <h2 className="text-3xl font-semibold tracking-tight">
+      Latest
+     </h2>
     </Layout>
     </>
   );

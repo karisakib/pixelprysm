@@ -18,6 +18,7 @@ collections:
   - name: blog
     label: Blog
     slug: "{{slug}}"
+    extension: "json"
     # slug:
     #   create: true
     #   encoding: "ascii"

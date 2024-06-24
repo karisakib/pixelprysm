@@ -14,12 +14,12 @@ export const PROJECTS_TEXT = ``;
 export const CONTACT_TEXT = ``;
 
 export const NAVIGATION = [
-  // {
-  //   title: "Blog",
-  //   slug: "blog",
-  //   path: "/blog",
-  //   animation: "",
-  // },
+  {
+    title: "Blog",
+    slug: "blog",
+    path: "/blog",
+    animation: "",
+  },
   // {
   //   title: "Info",
   //   slug: "info",
