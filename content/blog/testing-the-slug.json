@@ -1,5 +1,5 @@
 {
-  "slug": "{{fields.title}}",
+  "slug": "slug",
   "date": "June 24, 2024",
   "title": "Testing The Slug",
   "description": "test",
