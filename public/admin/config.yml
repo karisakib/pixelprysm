@@ -8,9 +8,10 @@ backend:
     delete: Delete {{collection}} “{{slug}}”
     uploadMedia: Upload “{{path}}”
     deleteMedia: Delete “{{path}}”
-    openAuthoring: '{{message}}'
+    openAuthoring: "{{message}}"
 
 site_url: https://pixelprysm.com
+logo_url: https://pixelprysm.com/images/logoBlack.svg
 slug:
   encoding: "ascii"
   clean_accents: true
@@ -20,7 +21,35 @@ media_library:
   name: uploadcare
 
 collections:
-  - name: blog
+  - label: "Pages"
+    name: "pages"
+    files:
+      - label: "Home Page"
+        name: "home"
+        file: "content/home.json"
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Intro, name: intro, widget: markdown }
+          - label: Team
+            name: team
+            widget: list
+            fields:
+              - { label: Name, name: name, widget: string }
+              - { label: Position, name: position, widget: string }
+              - { label: Photo, name: photo, widget: image }
+      - label: "About Page"
+        name: "about"
+        file: "content/about.json"
+        fields:
+          - { label: Title, name: title, widget: string }
+          - { label: Intro, name: intro, widget: markdown }
+          - label: Locations
+            name: locations
+            widget: list
+            fields:
+              - { label: Name, name: name, widget: string }
+              - { label: Address, name: address, widget: string }
+  - name: Blog
     label: Blog
     extension: "json"
     folder: content/blog
@@ -29,11 +58,16 @@ collections:
       name: blog_posts
     create: true
     slug: "{{slug}}"
-    filter: {field: visibleInCMS, value: true}
+    filter: { field: visibleInCMS, value: true }
     fields:
-      - {name: title, widget: string}
-      # - {name: slug, widget: string, pattern: ['^[a-z0-9]+(?:-[a-z0-9]+)*$', "Slug must only contain lowercase letters, numbers, and hyphens"], hint: "Auto-generated from title", default: "{{fields.title}}", required: true}
-      - {name: slug, widget: string, hint: "Auto-generated from title", default: "{{fields.title}}", required: true}
-      - {name: description, widget: string}
-      - {name: date, widget: datetime, date_format: "MMMM D, YYYY"}
-      - {name: body, widget: markdown}
+      - { name: title, widget: string }
+      - {
+          name: slug,
+          widget: string,
+          hint: "Auto-generated from title",
+          default: "{{fields.title}}",
+          required: true,
+        }
+      - { name: description, widget: string }
+      - { name: date, widget: datetime, date_format: "MMMM D, YYYY" }
+      - { name: body, widget: markdown }
