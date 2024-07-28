@@ -12,10 +12,12 @@ backend:
 
 site_url: https://pixelprysm.com
 logo_url: https://pixelprysm.com/images/logoBlack.svg
+
 slug:
   encoding: "ascii"
   clean_accents: true
   sanitize_replacement: "-"
+
 media_folder: "static/images/uploads"
 media_library:
   name: uploadcare
@@ -53,7 +55,7 @@ collections:
     label: Blog
     extension: "json"
     folder: content/blog
-    media_folder: "static/images/uploads"
+    media_folder: "static/images/blog"
     media_library:
       name: blog_posts
     create: true
@@ -61,6 +63,79 @@ collections:
     filter: { field: visibleInCMS, value: true }
     fields:
       - { name: title, widget: string }
-      - { name: description, widget: string }
-      - { name: date, widget: datetime, date_format: "MMMM D, YYYY" }
-      - { name: body, widget: markdown }
+      - {
+          label: "URL Slug",
+          name: "url",
+          widget: "string",
+          hint: 'Specify where the page will be written to. If you use "Blog Post", the post will be accessible from "blog/blog-post"',
+        }
+      - { label: "Description", name: "description", widget: "string" }
+      - { label: "Author", name: "author", widget: "string" }
+      - { label: "Category", name: "category", widget: "string" }
+      - { label: "Excerpt", name: "excerpt", widget: "text" }
+      - { label: "SEO Title", name: "seo_title", widget: "string" }
+      - { label: "SEO Description", name: "seo_description", widget: "text" }
+      - {
+          label: "Date",
+          name: "date",
+          widget: "datetime",
+          date_format: "MMMM D, YYYY",
+        }
+      - { label: "Tags", name: "tags", widget: "list", default: ["post"] }
+      - { label: "Featured Image", name: "image", widget: "image" }
+      - { label: "Image Caption", name: "imageAlt", widget: "string" }
+      - {
+          label: "Content",
+          name: "content",
+          widget: list,
+          fields: [{ label: Paragraph, name: paragraph, widget: string }],
+        }
+  - name: Projects
+    label: Projects
+    extension: "json"
+    folder: content/projects
+    media_folder: "static/images/projects"
+    media_library:
+      name: projects_listings
+    create: true
+    slug: "{{slug}}"
+    filter: { field: visibleInCMS, value: true }
+    fields:
+      - { label: "Project Title", name: title, widget: string }
+      - {
+          label: "URL Slug",
+          name: "url",
+          widget: "string",
+          hint: 'Specify where the page will be written to. If you use "Blog Post", the post will be accessible from "blog/blog-post"',
+        }
+      - { label: "Client", name: "client", widget: "string" }
+      - { label: "Project Description", name: "description", widget: "string" }
+      - { label: "Category", name: "category", widget: "list", default: ["web design"] }
+      - { label: "Project GIF", name: "gif", widget: "file", hint: "GIF per individual project" }
+      - { label: "GIF Caption", name: "imageAlt", widget: "string" }
+      - { name: "background_image", label: "Background Image", widget: "image", hint: "Image for the project tile background" }
+      - { label: "SEO Title", name: "seo_title", widget: "string" }
+      - { label: "SEO Description", name: "seo_description", widget: "text" }
+      - {
+          label: "Date",
+          name: "date",
+          widget: "datetime",
+          date_format: "MMMM D, YYYY",
+        }
+      - {
+          label: "Technologies",
+          name: "technologies",
+          widget: "list",
+          default: ["React"],
+        }
+      - {
+          label: "Content",
+          name: "content",
+          widget: list,
+          fields: [{ label: Paragraph, name: paragraph, widget: text }],
+        }
+      - { label: "Completion Status", name: "status", widget: "select", options: ["completed", "ongoing"], default: "completed" }
+      - { label: "Project URL", name: "project_url", widget: "string" }
+      - { label: "Client Feedback", name: "feedback", widget: "text" }
+
+

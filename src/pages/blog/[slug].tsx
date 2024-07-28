@@ -1,13 +1,39 @@
 import Layout from "@/layouts/Layout";
+import { useRouter } from "next/router";
 
 export default function BlogPost() {
- return (
-   <Layout>
-    <div className="flex flex-col pr-16">
-      <h2 className="text-3xl font-semibold tracking-tight">
-       Slugged blog appears here
-      </h2>
-     </div>
-   </Layout>
- );
+  const router = useRouter();
+
+  // If the page is not yet generated, show a loading state
+  if (router.isFallback) {
+    return <div>Loading...</div>;
+  }
+
+  return (
+    <Layout>
+      <div className="flex flex-col pr-16">
+        <h2 className="text-3xl font-semibold tracking-tight">
+          {router.query.slug}
+        </h2>
+      </div>
+    </Layout>
+  );
+}
+
+// This function gets called at build time on server-side.
+// It won't be called on client-side, so you can even do
+// direct database queries.
+export async function getStaticProps() {
+ // Call an external API endpoint to get posts.
+ // You can use any data fetching library
+ const res = await fetch('http://localhost:3000/api/test')
+ const posts = await res.json()
+
+ // By returning { props: { posts } }, the Blog component
+ // will receive `posts` as a prop at build time
+ return {
+   props: {
+     posts,
+   },
+ }
 }

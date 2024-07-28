@@ -14,7 +14,7 @@ export default function Blog({ posts }) {
         <div className="my-3">
           {posts.map((post, index) => (
             <div key={index} className="flex flex-col my-20">
-              <Link href={post.title} className="text-4xl font-semibold tracking-tight">
+              <Link href={`/blog/${post.slug}`} className="text-4xl font-semibold tracking-tight">
                 {post.title}
               </Link>
               <span className="text-sm font-light">{post.date}</span>
@@ -29,7 +29,7 @@ export default function Blog({ posts }) {
 export async function getStaticProps() {
   const blogDir = "./content/blog";
   const files = fs.readdirSync(blogDir);
-  const posts = [];
+  const posts: Array<object> = [];
 
   files.forEach((file, err) => {
     if (file) {
