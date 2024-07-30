@@ -18,7 +18,9 @@ export default function BlogPost({ post }) {
     <Layout>
       <div className="flex flex-col pr-16">
         <h2 className="text-3xl font-semibold tracking-tight">{post.title}</h2>
-        <p>{post.content}</p>
+        <span className="test-lg">{post.date}</span>
+        <span className="text-sm">{post.description}</span>
+        <p className="text-lg">{post.body}</p>
       </div>
     </Layout>
   );
@@ -63,7 +65,7 @@ export async function getStaticPaths() {
     }
     const posts = await res.json();
 
-    const paths = posts.map((post) => ({
+    const paths = posts.data.map((post) => ({
       params: { slug: post.slug },
     }));
 
